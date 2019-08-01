@@ -1,2 +1,2 @@
 # Pulo-do-Gato
-Resolvendo problemas usando Recursividade e Programação Dinâmica
+ - Resolvendo problemas computacionais usando Recursividade e Programação Dinâmica
