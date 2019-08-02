@@ -64,9 +64,9 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
   A primeira é bem intuitiva: quando não houver mais lajotas para pular, a função para. Então:
   
   	int calculaPulos(int index){
-  	    if(index >= tamanho - 1){
+  	    if(index >= tamanho - 1)
   	    	return 0;
-  	    }
+		
   	    return 1 + calculaPulos(index + 1);
   	}
 	
@@ -79,12 +79,12 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
    Um passo criativo logo a frente, mas vou explicar o motivo da implementação logo após. Lá vai:
    
    	int calculaPulos(int index){
-  	   if(index >= tamanho - 1){
+  	   if(index >= tamanho - 1)
   	      return 0;
-  	   }
-  	   if(lajotas[index] == 0){
+  	   
+  	   if(lajotas[index] == 0)
   	      return tamanho;
-  	   }
+  	   
   	   return 1 + calculaPulos(index + 1);
   	}
 	
@@ -95,9 +95,11 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
   	   scanf("%d", &tamanho);
   	   for(int i = 0; i < tamanho; i++)
   	      scanf("%d", &lojotas[i]);
+	      
   	   int resultado = calculaPulos(0);
   	   if (resultado >= tamanho)
   	      resultado = -1;
+	      
            printf("%d", resultado);
  
   	   return 0;
@@ -113,8 +115,10 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
   	int calculaPulos(int index){
       	   if(index >= tamanho - 1)
               return 0;
+	      
       	   if(lajotas[index] == 0)
               return tamanho;
+	      
       	   return 1 + min(calculaPulos(index + 1), calculaPulos(index + 2));
          }
 	 
@@ -146,9 +150,11 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
 	   scanf("%d", &tamanho);
 	   for(int i = 0; i < tamanho; i++)
 	   	 scanf("%d", &lajotas[i]);
+		 
 	   int resultado = calculaPulos(0);
 	   if(resultado >= tamanho)
 	  	 resultado = -1;
+		 
 	   printf("%d", resultado);
    
 	   return 0;
@@ -179,9 +185,10 @@ Primeiro, uma váriavel para salvar todos os caminhos já calculados:
   	using namespace std;
   	#define MAX 10005
  
-  	int lajotas [MAX]; <br>
-	int calculados[MAX]; <br>
+  	int lajotas [MAX];
+	int calculados[MAX];
   	int tamanho;
+	
 Essa váriavel tem o mesmo tamanho que as lajotas, pois é o máximo de possível caminhos.
 Também adicionei outro #include logo acima. Esse #include nos permite usar a função _memset()_.
 Vamos usar essa função somente para setar como -1 todos os valores dentro da array _calculados_
@@ -192,9 +199,11 @@ Assim:
 	   scanf("%d", &tamanho);
 	   for(int i = 0; i < tamanho; i++)
 	   	 scanf("%d", &lajotas[i]);
+		 
 	   int resultado = calculaPulos(0);
 	   if(resultado >= tamanho)
 	  	 resultado = -1;
+		 
 	   printf("%d", resultado);
    
 	   return 0;
@@ -235,7 +244,49 @@ Assim:
 	    return calculados[index];	    
 	}//end calculaPulos()
   
-  E pronto! \o/
+  Colocando tudo junto, temos:
+  
+  	#include <iostream> 
+	#include <cstring> 
+  	using namespace std;
+  	#define MAX 10005
+ 
+  	int lajotas [MAX];
+	int calculados[MAX];
+  	int tamanho;
+	
+	int calculaPulos(int index){
+  	
+	    if(index >= tamanho-1)
+		return 0;
+  
+	    if(lajotas[index] == 0)
+		return tamanho;
+            
+	    if(calculados[index] != -1)
+	    	return calculados[index];
+		
+	    calculados[index] = 1 + min(calculaPulos(index+1), calculaPulos(index+2));
+
+	    return calculados[index];	    
+	}//end calculaPulos()	
+	
+	int main(){
+  	   memset(calculados, -1, sizeof(calculados);
+	   scanf("%d", &tamanho);
+	   for(int i = 0; i < tamanho; i++)
+	   	 scanf("%d", &lajotas[i]);
+		 
+	   int resultado = calculaPulos(0);
+	   if(resultado >= tamanho)
+	  	 resultado = -1;
+		 
+	   printf("%d", resultado);
+   
+	   return 0;
+  	}//end main()
+  
+  E é isso! \o/
  Nosso programinha está pronto e optimizado!
  
  Teste dentro do site do problema original:
