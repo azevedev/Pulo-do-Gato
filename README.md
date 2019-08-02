@@ -30,12 +30,14 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
  
   Fiz o código em C++, mas pode ser aplicado a outras linguagens.
   Primeiro, vamos declarar nossas variáveis:
-  > #include <iostream>
-  > using namespace std;
-  > #define MAX 10005
-  >
-  > int lajotas [MAX]; <br>
-  > int tamanho;
+  
+  	#include <iostream>
+  	using namespace std;
+  	#define MAX 10005
+ 
+  	int lajotas [MAX]; <br>
+  	int tamanho;
+  
   Todas elas são globais, pois vamos usar num escopo de recursividade.
   
   Agora, vamos ler os inputs dentro da função _main_:
