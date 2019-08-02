@@ -155,7 +155,7 @@ Hora de optimizar esse código!
  O problema do código anterior é que calculamos todas as possibilidades de caminhos a partir de todas as lajotas.
 Isso resulta em funções calculando o mesmo valor ou mesmo caminho várias vezes, o que é um desperdício de memória e tempo de processamento.
 A árvore abaixo representa o código anterior em execução:
-
+![Tree](https://github.com/azevedomath/Pulo-do-Gato/blob/Coding/tree-viz.png)
 
 
 
