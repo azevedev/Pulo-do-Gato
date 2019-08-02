@@ -56,6 +56,7 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
   Depois, vamos implementar a função para calcular os pulos.
   O macete aqui é notar que esse problema pode ser resolvido de forma recursiva.
   Se divirmos uma função que, dado um índice (que represente uma lajota), consiga retornar a quantidade de pulos a partir de   sí mesmo, temos uma recursividade! \o/
+  
   Assim, temos:
   
   	int calculaPulos(int index){
@@ -210,6 +211,7 @@ Essa váriavel tem o mesmo tamanho que as lajotas, pois este é número o máxim
 Também adicionei outro #include logo acima. A biblioteca _<cstring>_ nos permite usar a função _memset()_.
 Vamos usar essa função somente para setar como -1 todos os valores dentro da array _calculados_.
 Poderia ser qualquer número negativo, usamos isso apenas para saber quais valores já foram calculados ou não.
+	
 Assim:
 
 	int main(){
@@ -228,7 +230,8 @@ Assim:
   	}//end main()
   
   Agora vamos adicionar a última condição de parada da recursividade: caso o valor do _index_ já tenha sido calculado, retornamos o valor guardado na array _calculados_.
-  Assim:
+  
+  Logo:
   
   	int calculaPulos(int index){
   	
@@ -305,7 +308,8 @@ Assim:
   	}//end main()
   
   E é isso! \o/
+  
  Nosso programinha está pronto e optimizado!
  
  Teste dentro do site do problema original:
- 
+ ![Resultado](https://github.com/azevedomath/Pulo-do-Gato/blob/Coding/result.png)
