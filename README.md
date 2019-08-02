@@ -7,7 +7,7 @@
  ### O problema
    O gato Obinho gosta de brincar atravessando filas de lajotas no chão de um prédio. Ele sempre começa na primeira lajota, da esquerda para a direita, e sempre para na última lajota da fila. Obinho é muito preguiçoso, e só irá saltar até duas lajotas por vez. Outra caracteristica de Obinho é que ele gosta de pular somente em lajotas pretas e ignora as lajotas brancas podendo até mesmo desistir de brincar por causa delas.  
 
-   ![Obinho](https://github.com/azevedomath/Pulo-do-Gato/blob/Coding/2018f3pj_pulo.png)
+   ![Obinho](https://github.com/azevedomath/Pulo-do-Gato/blob/Coding/images/2018f3pj_pulo.png)
 **Pergunta:**  Dada uma fila de lajotas, qual o número mínimo de pulos que Obinho deve executar para chegar ao final da fila?
 
 
@@ -189,7 +189,7 @@ Hora de optimizar esse código!
  Isso resulta em funções recursivas calculando o mesmo valor ou mesmo caminho várias vezes, o que é um desperdício de memória e de tempo de processamento.
  A árvore abaixo representa o código anterior em execução:
 
-![Tree](https://github.com/azevedomath/Pulo-do-Gato/blob/Coding/tree-viz.png)
+![Tree](https://github.com/azevedomath/Pulo-do-Gato/blob/Coding/images/tree-viz.png)
 
 Repare que, os _nós_ com cores vermelhas, amarelas e verdes são, na verdade, o mesmo nó, que resultam nos mesmos caminhos. 
 O algoritmo anterior calcula esses nós mais de uma vez, o que causa o _delay_ no tempo de execução.
@@ -312,4 +312,4 @@ Assim:
  Nosso programinha está pronto e optimizado!
  
  Teste dentro do site do problema original:
- ![Resultado](https://github.com/azevedomath/Pulo-do-Gato/blob/Coding/result.png)
+ ![Resultado](https://github.com/azevedomath/Pulo-do-Gato/blob/Coding/images/result.png)
