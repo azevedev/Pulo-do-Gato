@@ -1,4 +1,4 @@
-# Pulo-do-Gato
+# Pulo do Gato
   ## Resolvendo problemas computacionais usando Recursividade e Programação Dinâmica
 
  Link do problema original: https://olimpiada.ic.unicamp.br/pratique/pj/2018/f3/pulo/
@@ -33,7 +33,9 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
   > #define MAX 10005
   >
   > int lajotas [MAX];
+  
   > int tamanho;
+  
  
 
   
