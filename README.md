@@ -213,7 +213,7 @@ Poderia ser qualquer número negativo, usamos isso apenas para saber quais valor
 Assim:
 
 	int main(){
-  	   memset(calculados, -1, sizeof(calculados);
+  	   memset(calculados, -1, sizeof(calculados));
 	   scanf("%d", &tamanho);
 	   for(int i = 0; i < tamanho; i++)
 	   	 scanf("%d", &lajotas[i]);
@@ -290,7 +290,7 @@ Assim:
 	}//end calculaPulos()	
 	
 	int main(){
-  	   memset(calculados, -1, sizeof(calculados);
+  	   memset(calculados, -1, sizeof(calculados));
 	   scanf("%d", &tamanho);
 	   for(int i = 0; i < tamanho; i++)
 	   	 scanf("%d", &lajotas[i]);
