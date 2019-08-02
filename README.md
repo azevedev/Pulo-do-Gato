@@ -100,15 +100,13 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
   Ou seja, precisamos adicionar a opção de Obinho saltar _duas_ lajotas.
   Além disso, temos que **_minimizar_** a quantidade de movimentos de Obinho.
   Para isso, fazemos o seguinte:
-  > int calculaPulos(int index){
-  >   if(index >= tamanho - 1)
-  >      return 0;
-  >  
-  >   if(lajotas[index] == 0)
-  >      return tamanho;
-  >   
-  >   return 1 + min(calculaPulos(index + 1), calculaPulos(index + 2));
-  > }
+    int calculaPulos(int index){
+      if(index >= tamanho - 1)
+         return 0;
+      if(lajotas[index] == 0)
+         return tamanho;
+      return 1 + min(calculaPulos(index + 1), calculaPulos(index + 2));
+    }
   Primeiro, temos a função "min". Ela recebe dois argumentos, x e y, e retorna o _menor_ deles.
   Assim, temos certeza que a recursividade vai sempre retornar o menor dos caminhos possíveis.
   E esses dois termos x e y são justamente os dois tipos de pulos que Obinho pode realizar.
