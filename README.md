@@ -4,11 +4,11 @@
  Link do problema original: https://olimpiada.ic.unicamp.br/pratique/pj/2018/f3/pulo/
  
 
- ## O problema
-   O gato Obinho gosta de brincar atravessando filas de lajotas no chão de um prédio. Ele sempre começa na primeira lajota, da esquerda para a direita, e sempre para na última lajota da fila. Obinho gosta de pular somente em lajotas pretas, ele ignora as brancas e pode até mesmo desistir de brincar por causa delas. Outra caracteristica de Obinho é que ele é muito preguiçoso, e só irá saltar até duas lajotas por vez.
+ ### O problema
+   O gato Obinho gosta de brincar atravessando filas de lajotas no chão de um prédio. Ele sempre começa na primeira lajota, da esquerda para a direita, e sempre para na última lajota da fila. Obinho é muito preguiçoso, e só irá saltar até duas lajotas por vez. Outra caracteristica de Obinho é que ele gosta de pular somente em lajotas pretas e ignora as lajotas brancas podendo até mesmo desistir de brincar por causa delas.  
 
    ![Obinho](https://github.com/azevedomath/Pulo-do-Gato/blob/Coding/2018f3pj_pulo.png)
-Pergunta:  Dada uma fila de lajotas, qual o número mínimo de pulos Obinho deve executar para chegar ao final da fila?
+**Pergunta:**  Dada uma fila de lajotas, qual o número mínimo de pulos que Obinho deve executar para chegar ao final da fila?
 
 
 Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se comportar.
@@ -27,3 +27,14 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
  A primeira, mais intuitiva, utiliza recursividade; A segunda utiliza Programação Dinâmica.
  
  ### Resolução por Recursividade:
+ 
+  Fiz o código em C++, mas pode ser aplicado a outras linguagens.
+  Primeiro, vamos declarar nossas variáveis:
+  > #define MAX 10005
+  >
+  > int lajotas [MAX];
+  > int tamanho;
+ 
+
+  
+  
