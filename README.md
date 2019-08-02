@@ -29,7 +29,10 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
  ### Resolução por Recursividade:
  
   Fiz o código em C++, mas pode ser aplicado a outras linguagens.
-  Primeiro, vamos declarar nossas variáveis:
+  Esse código não é a versão final. É uma versão mais simplificada do problema. 
+  Para ver a versão final, pule para a próxima secção.
+  
+  Vamos lá! Primeiro, vamos declarar nossas variáveis:
   
   	#include <iostream>
   	using namespace std;
@@ -61,7 +64,10 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
   
   Essa é a função base. Ela sempre retorna o valor de pulos atuais (1) somados aos outros pulos restantes (index + 1).
   Temos que criar as condições de parada dessa função.
-  A primeira é bem intuitiva: quando não houver mais lajotas para pular, a função para. Então:
+  A primeira é bem intuitiva: 
+  > quando não houver mais lajotas para pular, a função para. 
+  
+  Então:
   
   	int calculaPulos(int index){
   	    if(index >= tamanho - 1)
@@ -75,8 +81,9 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
   
   Certo, agora a próxima condição de parada é sobre as lajotas brancas:
    > ele gosta de pular somente em lajotas pretas e ignora as lajotas brancas podendo até mesmo desistir de brincar por causa delas.  
+   
    Então, se temos uma lajota branca, temos que parar a recursividade.
-   Um passo criativo logo a frente, mas vou explicar o motivo da implementação logo após. Lá vai:
+   Lá vai:
    
    	int calculaPulos(int index){
   	   if(index >= tamanho - 1)
@@ -88,8 +95,9 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
   	   return 1 + calculaPulos(index + 1);
   	}
 	
-  Se "lajotas[index] == 0", então estamos em uma lajota branca. O motivo de retornarmos "tamanho" se deve ao objetivo do programa, que é _minimizar_ a quantidade de movimentos. Ao retornarmos "tamanho", estamos dizendo que aquele caminho (pela lajota branca) possui a maior quantidade de movimentos possíveis, que é o próprio tamanho da fila. O algoritmo logo logo irá descartar esse caminho. Outro motivo para retornarmos "tamanho" se deve a possibilidade de não existir um caminho até o final da fila de lajotas. Quando a recursividade terminar, podemos simplesmente checar a quantidade de movimentos, e se for maior ou igual a "tamanho", sabemos que não existe um caminho válido. 
-  Na verdade, vamos implementar isso agora, dentro da main.
+  Se _lajotas[index] == 0_, então estamos em uma lajota branca. O motivo de retornarmos _tamanho_ se deve ao objetivo do programa, que é **_minimizar_** a quantidade de movimentos. Ao retornarmos _tamanho_, estamos dizendo que aquele caminho (pela lajota branca) possui a maior quantidade de movimentos possíveis, que é o próprio tamanho da fila. O algoritmo logo logo irá descartar esse caminho pois este é muito grande. Outro motivo para retornarmos _tamanho_ se deve a possibilidade de não existir um caminho válido até o final da fila de lajotas. Quando a recursividade terminar, podemos simplesmente checar a quantidade de movimentos, e se esta for maior ou igual a _tamanho_, sabemos que não existe um caminho válido. 
+ 
+Para implementarmos isso, basta usar um if, dentro da main:
   
   	int main(){
   	   scanf("%d", &tamanho);
@@ -106,9 +114,11 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
   	}//end main()
 	
   Prontinho. Agora só precisamos terminar nossa função que calcula os pulos.
+  
   Mais um detalhe sobre os pulos de Obinho:
   > Obinho é muito preguiçoso, e só irá saltar até duas lajotas por vez
-  Ou seja, precisamos adicionar a opção de Obinho saltar _duas_ lajotas.
+  
+  Ou seja, precisamos adicionar a opção de Obinho escolher se vai saltar **_apenas uma_** ou **_duas_** lajotas.
   Além disso, temos que **_minimizar_** a quantidade de movimentos de Obinho.
   Para isso, fazemos o seguinte:
   
@@ -121,10 +131,13 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
 	      
       	   return 1 + min(calculaPulos(index + 1), calculaPulos(index + 2));
          }
-	 
-  Primeiro, temos a função "min". Ela recebe dois argumentos, x e y, e retorna o _menor_ deles.
+
+  Parece que complicou ainda mais o código, mas é bem simples:
+  - Primeiro, temos a função "min". Ela recebe dois argumentos, x e y, e retorna o _menor_ deles.
   Assim, temos certeza que a recursividade vai sempre retornar o menor dos caminhos possíveis.
-  E esses dois termos x e y são justamente os dois tipos de pulos que Obinho pode realizar.
+  - Os dois argumentos da função min (x e y) são justamente os dois tipos de pulos que Obinho pode realizar.
+  Assim, colocamos a opção de Obinho escolher quantas lajotas irá pular, e a função vai retornar o menor caminho.
+  
   Então, o código completo fica assim:
   
   	#include <iostream>
@@ -161,21 +174,25 @@ Agora que sabemos como Obinho se comporta, vamos ver como o programa deve se com
   	}//end main()
   
   E pronto! Terminamos o código.
-  O único problema dessa solução é sua complexidade. Usando recursividade, temos uma complexidade de O(2^n), sendo _n_ o número de iterações, nesse caso o maior número possível para n é 10^4. Isso resulta em 10^8 iterações, no pior dos casos.
+  Eles já está funcionando _quase_ como deve, mas ainda temos um pequeno probleminha nesse código: complexidade. 
+  Usando recursividade, temos uma complexidade de  **O(2^n)**, sendo _n_ o maior número de iterações possíveis, nesse caso o   maior número possível para n é 10^4. 
+  Isso resulta em 10^8 iterações, no pior dos casos.
   Essa complexidade exige um tempo de execução maior que 200ms, logo não é a solução mais adequada para este problema. 
+
 Hora de optimizar esse código!
 
-### Dinamic Programming
+### Resolução por Programação Dinâmica
  Podemos usar Programação Dinâmica (DP) para resolver esse problema.
  DP nada mais é que uma forma mais ágil de abordar recursividade.
  O problema do código anterior é que calculamos todas as possibilidades de caminhos a serem seguidos a partir de todas as lajotas em que Obinho podia pular.
-Isso resulta em funções recursivas calculando o mesmo valor ou mesmo caminho várias vezes, o que é um desperdício de memória e de tempo de processamento.
-A árvore abaixo representa o código anterior em execução:
+ Isso resulta em funções recursivas calculando o mesmo valor ou mesmo caminho várias vezes, o que é um desperdício de memória e de tempo de processamento.
+ A árvore abaixo representa o código anterior em execução:
 
 ![Tree](https://github.com/azevedomath/Pulo-do-Gato/blob/Coding/tree-viz.png)
 
-Repare que, os _nós_ com cores vermelhas, amarelas e verdes são o mesmo nó, que resultam nos mesmos caminhos. O algoritmo calcula mais de uma vez, para todo nó da árvore.
-O que podemos fazer é _salvar_ os caminhos que já foram calculados, assim, quando a recursividade requerir novamente o cálculo daquele nó, simplesmente retornamos o valor que já foi calculado anteriormente. 
+Repare que, os _nós_ com cores vermelhas, amarelas e verdes são, na verdade, o mesmo nó, que resultam nos mesmos caminhos. 
+O algoritmo anterior calcula esses nós mais de uma vez, o que causa o _delay_ no tempo de execução.
+O que podemos fazer para solucionar esse problema é _salvar_ os caminhos que já foram calculados, assim, quando a recursividade requerir novamente o cálculo daquele nó, simplesmente retornamos o valor que já foi calculado anteriormente. 
 Pra isso funcionar, precisamos adicionar algumas linhas de código.
 
 Primeiro, uma váriavel para salvar todos os caminhos já calculados:
@@ -186,12 +203,13 @@ Primeiro, uma váriavel para salvar todos os caminhos já calculados:
   	#define MAX 10005
  
   	int lajotas [MAX];
-	int calculados[MAX];
+	int calculados[MAX];// <--
   	int tamanho;
 	
-Essa váriavel tem o mesmo tamanho que as lajotas, pois é o máximo de possível caminhos.
-Também adicionei outro #include logo acima. Esse #include nos permite usar a função _memset()_.
-Vamos usar essa função somente para setar como -1 todos os valores dentro da array _calculados_
+Essa váriavel tem o mesmo tamanho que as lajotas, pois este é número o máximo de caminhos.
+Também adicionei outro #include logo acima. A biblioteca _<cstring>_ nos permite usar a função _memset()_.
+Vamos usar essa função somente para setar como -1 todos os valores dentro da array _calculados_.
+Poderia ser qualquer número negativo, usamos isso apenas para saber quais valores já foram calculados ou não.
 Assim:
 
 	int main(){
@@ -209,7 +227,7 @@ Assim:
 	   return 0;
   	}//end main()
   
-  Agora vamos adicionar a última condição de parada da recursividade: caso o valor da função já tenha sido calculado, retornamos o valor.
+  Agora vamos adicionar a última condição de parada da recursividade: caso o valor do _index_ já tenha sido calculado, retornamos o valor guardado na array _calculados_.
   Assim:
   
   	int calculaPulos(int index){
